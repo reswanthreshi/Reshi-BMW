@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMW M4 Competition</title>
+
+  <style>
+    /* Import Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Rubik:wght@400;700&display=swap');
+
+    /* --- Global Styles --- */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Rubik', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* --- Background Video --- */
+    video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    /* --- Title --- */
+    h1 {
+      text-align: center;
+      color: white;
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 6px black;
+      font-family: 'Great Vibes', cursive;
+      font-size: 60px;
+      letter-spacing: 2px;
+    }
+
+    /* --- Search Box --- */
+    .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 40vh;
+      text-align: center;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50px;
+      padding: 10px 20px;
+      width: 320px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 16px;
+      background: transparent;
+    }
+
+    .search-box button {
+      background: #0078ff;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .search-box button:hover {
+      background: #005ec2;
+    }
+
+    /* --- BMW Info --- */
+    .bmw-info {
+      color: white;
+      font-size: 18px;
+      line-height: 1.8;
+      margin: 0 60px 20px 60px;
+      text-align: justify;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px 30px;
+      border-radius: 15px;
+      text-shadow: 2px 2px 5px black;
+      font-weight: 500;
+    }
+
+    /* --- Audio Section --- */
+    .audio-section {
+      margin: 20px 60px 60px 60px;
+      background: rgba(0, 0, 0, 0.65);
+      border-radius: 15px;
+      padding: 20px 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+
+    .audio-section h2 {
+      color: white;
+      font-family: 'Great Vibes', cursive;
+      font-size: 32px;
+      text-shadow: 2px 2px 5px black;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .audio-item {
+      color: white;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .audio-item p {
+      font-size: 18px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      text-shadow: 1px 1px 4px black;
+    }
+
+    audio {
+      width: 80%;
+      outline: none;
+      border-radius: 25px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+
+    /* --- Gallery --- */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+      margin: 0 40px 60px 40px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: transform 0.4s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* --- Fullscreen Image View --- */
+    .fullscreen {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .fullscreen img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 15px;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 18px;
+      box-shadow: 0 0 10px black;
+      transition: background 0.3s;
+    }
+
+    .back-button:hover {
+      background: rgba(255, 255, 255, 1);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline>
+    <source src="C:/Users/reshi.s/Downloads/YTDown.com_YouTube_M8-comp-edit_Media_zuwOfXU4iPo_001_1080p.mp4" type="video/mp4">
+  </video>
+
+  <!-- Search Section -->
+  <div class="search-container">
+    <h1>BMW M4 Competition</h1>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search BMW M4...">
+      <button onclick="searchImages()">Search</button>
+    </div>
+  </div>
+
+  <!-- BMW M4 Info -->
+  <div class="bmw-info">
+    <p>
+      The BMW M4 is a high-performance sports coupe from BMW’s M division.
+      It uses a 3.0L twin-turbo inline-6 engine producing up to 503 hp (543 hp in CSL).
+      Available in manual (RWD) or automatic (RWD/AWD) versions.
+      Accelerates 0–100 km/h in 3.4 seconds (Competition xDrive).
+      Features M Adaptive Suspension, Active M Differential, and carbon-fiber roof.
+      Interior includes M Sport seats, digital cockpit, and iDrive 8 infotainment.
+      Supports Apple CarPlay, Android Auto, and Harman Kardon audio.
+      Top speed: 250 km/h (290 km/h with M Driver’s Package).
+      Fuel efficiency: 8–10 km/l, tank capacity around 60 liters.
+      Price in India (2025): ≈ ₹1.53 crore (M4 Competition xDrive).
+    </p>
+  </div>
+
+  <!-- Audio Section -->
+  <div class="audio-section">
+    <h2>BMW Silencer Sounds</h2>
+
+    <div class="audio-item">
+      <p>BMW M4 Silencer Sound</p>
+      <audio controls>
+        <source src="C:/Users/reshi.s/Downloads/bmw-i8-noise-252644.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <div class="audio-item">
+      <p>BMW XM Exhaust Sound</p>
+      <audio controls>
+        <source src="C:/Users/reshi.s/Downloads/bmw-xm-car-sound-2023-165995.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+
+  <!-- Image Gallery -->
+  <div class="gallery" id="gallery">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 goldon shiny eyes.jpg" alt="BMW M4 golden shiny eyes">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 red colour.jpg" alt="BMW M4 red colour">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 eyes.jpg" alt="BMW M4 eyes">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 white colour.jpg" alt="BMW M4 white colour">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 gorgeous Grey.jpg" alt="BMW M4 gorgeous grey">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 rugget steering.jpg" alt="BMW M4 rugged steering">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 black colour.jpg" alt="BMW M4 black colour">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 single picture.jpg" alt="BMW M4 single picture">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 sky blur colour.jpg" alt="BMW M4 sky blur colour">
+  </div>
+
+  <!-- Fullscreen View -->
+  <div class="fullscreen" id="fullscreenView">
+    <button class="back-button" onclick="closeFullscreen()">⟵</button>
+    <img id="fullscreenImg" src="" alt="">
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function searchImages() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const images = document.querySelectorAll('#gallery img');
+      images.forEach(img => {
+        const altText = img.alt.toLowerCase();
+        img.style.display = altText.includes(input) ? 'block' : 'none';
+      });
+    }
+
+    document.getElementById('searchInput').addEventListener('keyup', searchImages);
+
+    // Fullscreen Image View
+    const fullscreenView = document.getElementById('fullscreenView');
+    const fullscreenImg = document.getElementById('fullscreenImg');
+
+    document.querySelectorAll('.gallery img').forEach(img => {
+      img.addEventListener('click', () => {
+        fullscreenImg.src = img.src;
+        fullscreenView.style.display = 'flex';
+      });
+    });
+
+    function closeFullscreen() {
+      fullscreenView.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
