@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMW M4 Showcase</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Background Video */
+    .video-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      filter: brightness(45%);
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 40px 10px 20px;
+    }
+
+    header h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #ffd700, #ff6600);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    /* Search Section */
+    .search-area {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0 50px;
+    }
+
+    .search-box {
+      display: flex;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 40px;
+      overflow: hidden;
+      width: 320px;
+    }
+
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 12px 16px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .search-box button {
+      background: #007bff;
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .search-box button:hover {
+      background: #0056b3;
+    }
+
+    /* Info Section */
+    .info {
+      max-width: 900px;
+      margin: 0 auto 50px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 25px 35px;
+      border-radius: 15px;
+      line-height: 1.7;
+      text-align: justify;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+
+    .info h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #ffcc00;
+    }
+
+    /* Audio Section */
+    .audio-section {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.65);
+      padding: 30px;
+      border-radius: 15px;
+    }
+
+    .audio-section h2 {
+      margin-bottom: 25px;
+      color: #00d4ff;
+      font-size: 28px;
+    }
+
+    .audio-item {
+      margin-bottom: 20px;
+    }
+
+    .audio-item p {
+      margin-bottom: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    audio {
+      width: 80%;
+      outline: none;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto 80px;
+      padding: 0 30px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      border-radius: 12px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: 0.4s;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Fullscreen Image View */
+    .fullscreen {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.95);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .fullscreen img {
+      max-width: 90%;
+      max-height: 85%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+
+    .close-btn {
+      margin-top: 20px;
+      background: #ff3333;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .close-btn:hover {
+      background: #cc0000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #bbb;
+      font-size: 14px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Video -->
+  <video class="video-bg" autoplay muted loop>
+    <source src="C:/Users/reshi.s/Downloads/YTDown.com_YouTube_M8-comp-edit_Media_zuwOfXU4iPo_001_1080p.mp4" type="video/mp4">
+  </video>
+
+  <header>
+    <h1>BMW M4 Competition</h1>
+  </header>
+
+  <!-- Search -->
+  <div class="search-area">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search image by name...">
+      <button onclick="searchImages()">Search</button>
+    </div>
+  </div>
+
+  <!-- Info -->
+  <section class="info">
+    <h2>About the BMW M4</h2>
+    <p>
+      The BMW M4 is a high-performance coupe powered by a 3.0L TwinPower Turbo inline-6 engine that produces up to 503 horsepower.
+      It delivers exceptional performance with 0–100 km/h acceleration in just 3.4 seconds (Competition xDrive variant).
+      Featuring M Adaptive Suspension, Active M Differential, and lightweight carbon-fiber elements, it offers precision and agility.
+      The interior includes advanced M Sport seats, digital displays, and BMW’s iDrive 8 infotainment system with CarPlay and Android Auto.
+      Its estimated mileage is 8–10 km/l, and it has a 60L fuel tank. Price in India (2025): ₹1.53 crore (approx).
+    </p>
+  </section>
+
+  <!-- Audio -->
+  <section class="audio-section">
+    <h2>BMW Exhaust Sounds</h2>
+
+    <div class="audio-item">
+      <p>M4 Silencer Sound</p>
+      <audio controls>
+        <source src="C:/Users/reshi.s/Downloads/bmw-i8-noise-252644.mp3" type="audio/mp3">
+      </audio>
+    </div>
+
+    <div class="audio-item">
+      <p>BMW XM Exhaust Sound</p>
+      <audio controls>
+        <source src="C:/Users/reshi.s/Downloads/bmw-xm-car-sound-2023-165995.mp3" type="audio/mp3">
+      </audio>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery" id="gallery">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 goldon shiny eyes.jpg" alt="golden shiny eyes">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 red colour.jpg" alt="red colour">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 eyes.jpg" alt="eyes">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 white colour.jpg" alt="white colour">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 gorgeous Grey.jpg" alt="gorgeous grey">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 rugget steering.jpg" alt="rugged steering">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 black colour.jpg" alt="black colour">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 single picture.jpg" alt="single picture">
+    <img src="C:/Users/reshi.s/Downloads/BMW M4 sky blur colour.jpg" alt="sky blur colour">
+  </section>
+
+  <!-- Fullscreen View -->
+  <div class="fullscreen" id="fullscreenView">
+    <img id="fullscreenImg" src="" alt="">
+    <button class="close-btn" onclick="closeFullscreen()">Close</button>
+  </div>
+
+  <footer>
+    © 2025 BMW M4 Showcase | Designed by Rishi
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Search
+    function searchImages() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const images = document.querySelectorAll('#gallery img');
+      images.forEach(img => {
+        img.style.display = img.alt.toLowerCase().includes(query) ? 'block' : 'none';
+      });
+    }
+
+    document.getElementById('searchInput').addEventListener('keyup', searchImages);
+
+    // Fullscreen
+    const fullscreenView = document.getElementById('fullscreenView');
+    const fullscreenImg = document.getElementById('fullscreenImg');
+
+    document.querySelectorAll('.gallery img').forEach(img => {
+      img.addEventListener('click', () => {
+        fullscreenImg.src = img.src;
+        fullscreenView.style.display = 'flex';
+      });
+    });
+
+    function closeFullscreen() {
+      fullscreenView.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
